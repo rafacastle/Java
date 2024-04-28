@@ -28,6 +28,8 @@ public class Module5 {
         x = numeros[0];   // Obtener el primer valor
         listaNombres.add("Anna");
         listaNombres.add("Bob");
+        listaNombres.add("Alex");
+        listaNombres.add("Jose");
 
         conjuntoNombres.add("Anna");
         conjuntoNombres.add("Anna");  // Este elemento duplicado no se añadirá de nuevo.
@@ -47,5 +49,12 @@ public class Module5 {
         // Sets y Maps
         System.out.println("Conjunto de Nombres: " + conjuntoNombres);
         System.out.println("Mapa de Edades: " + mapaEdades);
+
+        System.out.println("Lista de Nombres que empiezan con A:");
+        for (String nombre : listaNombres) {
+            if (nombre.startsWith("A")) {
+                System.out.println(nombre);
+            }
+        }
     }
 }
