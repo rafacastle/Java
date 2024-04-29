@@ -5,6 +5,15 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
+// Usando BufferedReader para texto
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+// Usando Scanner para texto
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 
 public class Module5 {
     // Arrays: Los arrays tienen tamaño fijo y no pueden crecer o encoger una vez inicializados.
@@ -55,6 +64,41 @@ public class Module5 {
             if (nombre.startsWith("A")) {
                 System.out.println(nombre);
             }
+        }
+
+        // Usando BufferReader
+        System.out.println("\n Texto con BufferReader (PREFERDO): \n");
+        String path = "C:/Users/luis.castillo/Documents/LearningJava/learning Java/src/text.txt"; // Cambia esto por la ruta de tu archivo
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = reader.readLine()) != null) System.out.println(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Usando Scanner
+        System.out.println("\n Texto con Scanner: \n");
+        File file = new File("C:/Users/luis.castillo/Documents/LearningJava/learning Java/src/text.txt"); // Cambia esto por la ruta de tu archivo
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // Leyendo un CSV
+        System.out.println("\n CSV: \n");
+        String pathcsv = "C:/Users/luis.castillo/Documents/LearningJava/learning Java/src/tabla.csv"; // Cambia esto por la ruta de tu archivo CSV
+        try (BufferedReader br = new BufferedReader(new FileReader(pathcsv))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] valores = line.split(","); // Divide cada línea en partes separadas por comas
+                System.out.println("Columna 1: " + valores[0] + " Columna 2: " + valores[1]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
